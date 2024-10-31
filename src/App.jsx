@@ -1,11 +1,18 @@
-import { useState } from 'react'
 import './App.css'
+import { useState } from 'react'
+import PersonalDetails from './PersonalDetails'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState('')
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
 
   return (
     <>
+    <PersonalDetails name={name} onChange={handleNameChange} />
+    <h1>{name}</h1>
     </>
   )
 }
