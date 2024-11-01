@@ -1,20 +1,29 @@
-import './App.css'
-import { useState } from 'react'
-import PersonalDetails from './PersonalDetails'
+import "./App.css";
+import { useState } from "react";
+import PersonalDetails from "./PersonalDetails";
 
 function App() {
-  const [name, setName] = useState('')
+  const [personalInfo, setPersonalInfo] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
 
-  function handleNameChange(e) {
-    setName(e.target.value);
+  function personalInfoChange(e) {
+    const { name, value } = e.target;
+    setPersonalInfo((prevInfo) => ({ ...prevInfo, [name]: value }));
   }
 
   return (
     <>
-    <PersonalDetails name={name} onChange={handleNameChange} />
-    <h1>{name}</h1>
+      <PersonalDetails
+        personalInfo={personalInfo}
+        onChange={personalInfoChange}
+      />
+      <h1>{personalInfo.fullname}</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
