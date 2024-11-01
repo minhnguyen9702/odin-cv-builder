@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 function PersonalDetails({ personalInfo, onChange }) {
   return (
     <>
+      <h2>Personal Details</h2>
       <label htmlFor="fullname">Fullname</label>
       <input
         type="text"
