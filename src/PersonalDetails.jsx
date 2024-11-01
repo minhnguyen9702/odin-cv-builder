@@ -1,48 +1,54 @@
 import PropTypes from "prop-types";
+import InputField from "./components/InputField";
 
 function PersonalDetails({ personalInfo, onChange }) {
+  const fields = [
+    {
+      label: "Fullname",
+      type: "text",
+      id: "fullname",
+      value: personalInfo.fullname,
+      onChange: onChange,
+      placeholder: "Enter your full name",
+    },
+    {
+      label: "Email",
+      type: "email",
+      id: "email",
+      value: personalInfo.email,
+      onChange: onChange,
+      placeholder: "Enter your email",
+    },
+    {
+      label: "Phone Number",
+      type: "tel",
+      id: "phone",
+      value: personalInfo.phone,
+      onChange: onChange,
+      placeholder: "Enter your phone number",
+    },
+    {
+      label: "Address",
+      type: "text",
+      id: "address",
+      value: personalInfo.address,
+      onChange: onChange,
+      placeholder: "City, Country",
+    },
+  ];
   return (
     <>
-      <h2>Personal Details</h2>
-      <label htmlFor="fullname">Fullname</label>
-      <input
-        type="text"
-        id="fullname"
-        name="fullname"
-        value={personalInfo.fullname}
-        onChange={onChange}
-        placeholder="Enter your full name"
+    {fields.map((field)=> (
+      <InputField
+      key={field.id}
+      label={field.label}
+      type={field.type}
+      id={field.id}
+      value={field.value}
+      onChange={onChange}
+      placeholder={field.placeholder}
       />
-
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={personalInfo.email}
-        onChange={onChange}
-        placeholder="Enter your email"
-      ></input>
-
-      <label htmlFor="phone">Phone Number</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        value={personalInfo.phone}
-        onChange={onChange}
-        placeholder="Enter your phone number"
-      ></input>
-
-      <label htmlFor="address">Address</label>
-      <input
-        type="text"
-        id="address"
-        name="address"
-        value={personalInfo.address}
-        onChange={onChange}
-        placeholder="City, Country"
-      ></input>
+    ))}
     </>
   );
 }
