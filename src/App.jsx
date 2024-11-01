@@ -20,7 +20,6 @@ function App() {
         personalInfo={personalInfo}
         onChange={personalInfoChange}
       />
-      <h1>{personalInfo.fullname}</h1>
     </>
   );
 }
