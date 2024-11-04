@@ -37,20 +37,19 @@ function PersonalDetails({ personalInfo, onChange }) {
     },
   ];
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mb-8">
-    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Personal Details</h2>
-    {fields.map((field)=> (
-      <InputField
-      key={field.id}
-      label={field.label}
-      type={field.type}
-      id={field.id}
-      value={field.value}
-      onChange={onChange}
-      placeholder={field.placeholder}
-      />
-    ))}
-    </div>
+    <>
+      {fields.map((field) => (
+        <InputField
+          key={field.id}
+          label={field.label}
+          type={field.type}
+          id={field.id}
+          value={field.value}
+          onChange={onChange}
+          placeholder={field.placeholder}
+        />
+      ))}
+    </>
   );
 }
 

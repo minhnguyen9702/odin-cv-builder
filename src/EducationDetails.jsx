@@ -1,4 +1,5 @@
 function EducationDetails() {
+  const fields = null
   return <></>;
 }
 

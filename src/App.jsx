@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   };
 
   const [educationInfo, setEducationInfo] = useState([
-    { id: uuidv4(), school: "", degree: "", year: "" },
+    { id: uuidv4(), school: "", degree: "", startYear: "", endYear: "" },
   ]);
 
   const addEducationInfo = () => {
@@ -26,7 +27,8 @@ function App() {
         id: uuidv4(),
         school: "",
         degree: "",
-        year: "",
+        startYear: "",
+        endYear: "",
       },
     ]);
   };
@@ -46,10 +48,12 @@ function App() {
 
   return (
     <>
-      <PersonalDetails
-        personalInfo={personalInfo}
-        onChange={personalInfoChange}
-      />
+      <DetailsWrapper header="Personal Details">
+        <PersonalDetails
+          personalInfo={personalInfo}
+          onChange={personalInfoChange}
+        />
+      </DetailsWrapper>
     </>
   );
 }
