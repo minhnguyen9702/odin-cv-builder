@@ -2,6 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
+import EducationDetails from "./EducationDetails";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -17,7 +18,7 @@ function App() {
   };
 
   const [educationInfo, setEducationInfo] = useState([
-    { id: uuidv4(), school: "", degree: "", startYear: "", endYear: "" },
+    { id: uuidv4(), school: "", degree: "", startDate: "", endDate: "" },
   ]);
 
   const addEducationInfo = () => {
@@ -27,8 +28,8 @@ function App() {
         id: uuidv4(),
         school: "",
         degree: "",
-        startYear: "",
-        endYear: "",
+        startDate: "",
+        endDate: "",
       },
     ]);
   };
@@ -52,6 +53,14 @@ function App() {
         <PersonalDetails
           personalInfo={personalInfo}
           onChange={personalInfoChange}
+        />
+      </DetailsWrapper>
+      <DetailsWrapper header="Education">
+        <EducationDetails
+          educationInfo={educationInfo}
+          onAdd={addEducationInfo}
+          onChange={educationInfoChange}
+          onRemove={removeEducation}
         />
       </DetailsWrapper>
     </>

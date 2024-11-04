@@ -6,7 +6,7 @@ function PersonalDetails({ personalInfo, onChange }) {
     {
       label: "Fullname",
       type: "text",
-      id: "fullname",
+      name: "fullname",
       value: personalInfo.fullname,
       onChange: onChange,
       placeholder: "Enter your full name",
@@ -14,7 +14,7 @@ function PersonalDetails({ personalInfo, onChange }) {
     {
       label: "Email",
       type: "email",
-      id: "email",
+      name: "email",
       value: personalInfo.email,
       onChange: onChange,
       placeholder: "Enter your email",
@@ -22,7 +22,7 @@ function PersonalDetails({ personalInfo, onChange }) {
     {
       label: "Phone Number",
       type: "tel",
-      id: "phone",
+      name: "phone",
       value: personalInfo.phone,
       onChange: onChange,
       placeholder: "Enter your phone number",
@@ -30,7 +30,7 @@ function PersonalDetails({ personalInfo, onChange }) {
     {
       label: "Address",
       type: "text",
-      id: "address",
+      name: "address",
       value: personalInfo.address,
       onChange: onChange,
       placeholder: "City, Country",
@@ -40,10 +40,10 @@ function PersonalDetails({ personalInfo, onChange }) {
     <>
       {fields.map((field) => (
         <InputField
-          key={field.id}
+          key={field.name}
           label={field.label}
           type={field.type}
-          id={field.id}
+          name={field.name}
           value={field.value}
           onChange={onChange}
           placeholder={field.placeholder}
