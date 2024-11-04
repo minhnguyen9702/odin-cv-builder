@@ -18,7 +18,7 @@ function App() {
   };
 
   const [educationInfo, setEducationInfo] = useState([
-    { id: uuidv4(), school: "", degree: "", startDate: "", endDate: "" },
+    { id: uuidv4(), school: "", degree: "", startDate: "", endDate: "", isShow: true },
   ]);
 
   const addEducationInfo = () => {
@@ -30,6 +30,7 @@ function App() {
         degree: "",
         startDate: "",
         endDate: "",
+        isShow: true,
       },
     ]);
   };
