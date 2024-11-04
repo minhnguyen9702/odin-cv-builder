@@ -5,7 +5,7 @@ function EducationDetails({ educationInfo, onAdd, onChange, onRemove }) {
   return (
     <div>
       {educationInfo.map((edu) => (
-        <div key={edu.id}>
+        <div key={edu.id} className="p-4 bg-white rounded-lg shadow-md mb-4">
           <InputField
             label="School Name"
             type="text"
@@ -22,7 +22,7 @@ function EducationDetails({ educationInfo, onAdd, onChange, onRemove }) {
             onChange={(e) => onChange(edu.id, e)}
             placeholder="Enter Degree"
           />
-          <div className="flex">
+          <div className="flex space-x-4">
             <InputField
               label="Start Date"
               type="text"
@@ -40,10 +40,20 @@ function EducationDetails({ educationInfo, onAdd, onChange, onRemove }) {
               placeholder="Enter End Date"
             />
           </div>
-          <button onClick={() => onRemove(edu.id)}>-</button>
+          <button
+            onClick={() => onRemove(edu.id)}
+            className="block mx-auto px-4 py-2 text-sm bg-red-500 text-white rounded-full hover:bg-red-600"
+          >
+            - Education
+          </button>
         </div>
       ))}
-      <button onClick={onAdd}>+</button>
+      <button
+        onClick={onAdd}
+        className="block mx-auto px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
+      >
+        + Education
+      </button>
     </div>
   );
 }
