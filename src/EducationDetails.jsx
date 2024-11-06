@@ -54,7 +54,7 @@ function EducationDetails({ educationInfo, onAdd, onChange, onRemove }) {
               name="location"
               value={edu.location}
               onChange={(e) => onChange(edu.id, e)}
-              placeholder="Enter Location"
+              placeholder="City, Country"
             />
             <div className="flex justify-between">
               <button

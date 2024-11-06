@@ -54,7 +54,7 @@ function ExperienceDetails({ experienceInfo, onAdd, onChange, onRemove }) {
               name="location"
               value={exp.location}
               onChange={(e) => onChange(exp.id, e)}
-              placeholder="Enter Location"
+              placeholder="City, Country"
             />
             <InputField
               label="Description"
