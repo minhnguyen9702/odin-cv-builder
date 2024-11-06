@@ -48,6 +48,14 @@ function EducationDetails({ educationInfo, onAdd, onChange, onRemove }) {
                 placeholder="Enter End Date"
               />
             </div>
+            <InputField
+              label="Location"
+              type="text"
+              name="location"
+              value={edu.location}
+              onChange={(e) => onChange(edu.id, e)}
+              placeholder="Enter Location"
+            />
             <div className="flex justify-between">
               <button
                 onClick={() => onRemove(edu.id)}
@@ -55,13 +63,26 @@ function EducationDetails({ educationInfo, onAdd, onChange, onRemove }) {
               >
                 - Education
               </button>
-              <button onClick={() => handleHide(edu.id)} className="px-4 py-2 text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600">Hide</button>
+              <button
+                onClick={() => handleHide(edu.id)}
+                className="px-4 py-2 text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600"
+              >
+                Hide
+              </button>
             </div>
           </div>
         ) : (
-          <div key={edu.id} className="flex justify-between p-4 bg-white rounded-lg shadow-md mb-4">
+          <div
+            key={edu.id}
+            className="flex justify-between p-4 bg-white rounded-lg shadow-md mb-4"
+          >
             <div className="text-gray-700">{edu.school}</div>
-            <button onClick={() => handleShow(edu.id)} className="px-4 py-2 text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600">Show</button>
+            <button
+              onClick={() => handleShow(edu.id)}
+              className="px-4 py-2 text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600"
+            >
+              Show
+            </button>
           </div>
         )
       )}
@@ -83,6 +104,7 @@ EducationDetails.propTypes = {
       degree: PropTypes.string,
       startDate: PropTypes.string,
       endDate: PropTypes.string,
+      location: PropTypes.string,
       isShow: PropTypes.bool,
     })
   ).isRequired,

@@ -18,7 +18,15 @@ function App() {
   };
 
   const [educationInfo, setEducationInfo] = useState([
-    { id: uuidv4(), school: "", degree: "", startDate: "", endDate: "", isShow: true },
+    {
+      id: uuidv4(),
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      isShow: true,
+    },
   ]);
 
   const addEducationInfo = () => {
@@ -30,6 +38,7 @@ function App() {
         degree: "",
         startDate: "",
         endDate: "",
+        location: "",
         isShow: true,
       },
     ]);
@@ -50,20 +59,22 @@ function App() {
 
   return (
     <>
-      <DetailsWrapper header="Personal Details">
-        <PersonalDetails
-          personalInfo={personalInfo}
-          onChange={personalInfoChange}
-        />
-      </DetailsWrapper>
-      <DetailsWrapper header="Education">
-        <EducationDetails
-          educationInfo={educationInfo}
-          onAdd={addEducationInfo}
-          onChange={educationInfoChange}
-          onRemove={removeEducation}
-        />
-      </DetailsWrapper>
+      <div>
+        <DetailsWrapper header="Personal Details">
+          <PersonalDetails
+            personalInfo={personalInfo}
+            onChange={personalInfoChange}
+          />
+        </DetailsWrapper>
+        <DetailsWrapper header="Education">
+          <EducationDetails
+            educationInfo={educationInfo}
+            onAdd={addEducationInfo}
+            onChange={educationInfoChange}
+            onRemove={removeEducation}
+          />
+        </DetailsWrapper>
+      </div>
     </>
   );
 }
