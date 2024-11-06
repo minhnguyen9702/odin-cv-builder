@@ -4,6 +4,7 @@ import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
 import EducationDetails from "./EducationDetails";
 import ExperienceDetails from "./ExperienceDetails";
+import Display from "./Display";
 
 function App() {
   // This section handles personalInfo
@@ -76,8 +77,8 @@ function App() {
   };
 
   return (
-    <>
-      <div>
+    <div className="flex">
+      <div className="flex-grow m-8">
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
             personalInfo={personalInfo}
@@ -101,7 +102,14 @@ function App() {
           />
         </DetailsWrapper>
       </div>
-    </>
+      <div className="w-1/2 ml-4">
+        <Display
+          personalInfo={personalInfo}
+          educationInfo={educationInfo}
+          experienceInfo={experienceInfo}
+        />
+      </div>
+    </div>
   );
 }
 
