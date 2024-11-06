@@ -56,6 +56,15 @@ function ExperienceDetails({ experienceInfo, onAdd, onChange, onRemove }) {
               onChange={(e) => onChange(exp.id, e)}
               placeholder="Enter Location"
             />
+            <InputField
+              label="Description"
+              type="text"
+              name="desc"
+              value={exp.desc}
+              onChange={(e) => onChange(exp.id, e)}
+              placeholder="Enter Description"
+              multiline={true}
+            />
             <div className="flex justify-between">
               <button
                 onClick={() => onRemove(exp.id)}
