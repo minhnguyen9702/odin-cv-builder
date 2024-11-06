@@ -3,7 +3,7 @@ import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/16/solid";
 
 function Display({ personalInfo, educationInfo, experienceInfo }) {
   return (
-    <div className="bg-gray-100 aspect-[10/14.14] w-full max-w-2xl mx-auto p-8">
+    <div className="bg-white aspect-[10/14.14] w-full max-w-2xl mx-auto p-8 mt-4 mb-4 shadow-md">
       {/* Personal Info */}
       <div className="mb-4 text-center">
         <h1 className="text-3xl font-bold">{personalInfo.fullname}</h1>
@@ -59,6 +59,38 @@ function Display({ personalInfo, educationInfo, experienceInfo }) {
               <i>{edu.location}</i>
             </p>
           </div>
+        </div>
+      ))}
+      {/* Experience Info */}
+      {experienceInfo && experienceInfo.length > 0 ? (
+        <div>
+          <h2 className="text-xl font-bold">EXPERIENCE</h2>
+          <div className="border-b-2 border-black w-full"></div>
+        </div>
+      ) : (
+        <></>
+      )}
+      {experienceInfo.map((exp) => (
+        <div key={exp.id} className="mb-4">
+          <div className="flex justify-between">
+            <div>
+              <p className="font-bold">{exp.company}</p>
+              <p>
+                <i>{exp.position}</i>
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="font-bold">
+                {exp.startDate} - {exp.endDate}
+              </p>
+              <p>
+                <i>{exp.location}</i>
+              </p>
+            </div>
+          </div>
+          <p>
+            {exp.desc}
+          </p>
         </div>
       ))}
     </div>

@@ -77,7 +77,7 @@ function App() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex bg-gray-100">
       <div className="flex-grow m-8">
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
