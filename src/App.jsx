@@ -102,7 +102,7 @@ function App() {
           />
         </DetailsWrapper>
       </div>
-      <div className="w-1/2 ml-4">
+      <div className="w-2/3 ml-4">
         <Display
           personalInfo={personalInfo}
           educationInfo={educationInfo}
