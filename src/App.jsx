@@ -5,6 +5,7 @@ import PersonalDetails from "./PersonalDetails";
 import EducationDetails from "./EducationDetails";
 import ExperienceDetails from "./ExperienceDetails";
 import Display from "./Display";
+import ButtonsTray from "./ButtonsTray";
 
 function App() {
   // This section handles personalInfo
@@ -76,9 +77,24 @@ function App() {
     setExperienceInfo(experienceInfo.filter((exp) => exp.id !== id));
   };
 
+  const clearResume = () => {
+    setPersonalInfo({
+      fullname: "",
+      email: "",
+      phone: "",
+      address: "",
+    });
+    setEducationInfo([]);
+    setExperienceInfo([]);
+  };
+
   return (
     <div className="flex bg-gray-100">
+      {/* Input Section*/}
       <div className="flex-grow m-8">
+        <ButtonsTray
+          onClear={clearResume}
+        />
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
             personalInfo={personalInfo}
@@ -102,7 +118,8 @@ function App() {
           />
         </DetailsWrapper>
       </div>
-      <div className="w-2/3 ml-4">
+      <div className="w-[68%] ml-4">
+        {/* Display Section*/}
         <Display
           personalInfo={personalInfo}
           educationInfo={educationInfo}
