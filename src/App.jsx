@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
@@ -88,13 +89,62 @@ function App() {
     setExperienceInfo([]);
   };
 
+  const loadExample = () => {
+    setPersonalInfo({
+      fullname: "Solid Snake",
+      email: "solid.snake@foxhound.com",
+      phone: "(555) 123-4567",
+      address: "Alaska, United States",
+    });
+    setEducationInfo([
+      {
+        id: uuidv4(),
+        school: "U.S. Army Special Forces Training",
+        degree: "Special Operations Training Program",
+        startDate: "1990",
+        endDate: "1992",
+        location: "Fort Bragg, North Carolina",
+        isShow: false,
+      },
+      {
+        id: uuidv4(),
+        school: "CIA Training Facility (The Farm)",
+        degree: "Covert Operations Training",
+        startDate: "1994",
+        endDate: "1995",
+        location: "Camp Peary, Virginia",
+        isShow: false,
+      },
+    ]);
+    setExperienceInfo([
+      {
+        id: uuidv4(),
+        company: "Foxhound",
+        position: "Special Operations Soldier",
+        startDate: "1995",
+        endDate: "1999",
+        location: "Various Global Locations",
+        desc: "Conducted high-risk infiltration and intelligence-gathering missions. Specialized in stealth, CQC (close-quarters combat), and counter-terrorism operations. Played a crucial role in Operation Intrude N313 to destroy the rogue state of Outer Heaven.",
+        isShow: false,
+      },
+      {
+        id: uuidv4(),
+        company: "Philanthropy",
+        position: "Co-Founder / Field Operative",
+        startDate: "2000",
+        endDate: "2005",
+        location: "Worldwide",
+        desc: "Established the anti-Metal Gear NGO 'Philanthropy' and engaged in operations to locate and destroy Metal Gear units. Responsible for strategic planning and execution of missions, as well as intelligence analysis and tactical coordination.",
+        isShow: false,
+      },
+    ]);
+  };
+
   return (
     <div className="flex bg-gray-100">
       {/* Input Section*/}
       <div className="flex-grow m-8">
-        <ButtonsTray
-          onClear={clearResume}
-        />
+        <ButtonsTray onClear={clearResume} onLoadExample={loadExample}/>
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
             personalInfo={personalInfo}

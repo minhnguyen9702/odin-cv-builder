@@ -4,8 +4,8 @@ function ButtonsTray({ onClear, onLoadExample, onDownload }) {
   return (
     <div className="mx-auto p-6 bg-white rounded-lg shadow-md mb-6 flex justify-between">
       <button onClick={onClear}>Clear Resume</button>
-      <button>Load Example</button>
-      <button>Download Resume</button>
+      <button onClick={onLoadExample}>Load Example</button>
+      <button onClick={onDownload}>Download Resume</button>
     </div>
   );
 }

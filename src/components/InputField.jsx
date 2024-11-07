@@ -22,7 +22,7 @@ function InputField({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full p-2 transition-all duration-300 ease"
+          className="h-40 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full p-2 transition-all duration-300 ease"
         ></textarea>
       ) : (
         <input
