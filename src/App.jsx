@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import { v4 as uuidv4 } from "uuid";
 import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
@@ -122,7 +124,7 @@ function App() {
         position: "Special Operations Soldier",
         startDate: "1995",
         endDate: "1999",
-        location: "Various Global Locations",
+        location: "Global Locations",
         desc: "Conducted high-risk infiltration and intelligence-gathering missions. Specialized in stealth, CQC (close-quarters combat), and counter-terrorism operations. Played a crucial role in Operation Intrude N313 to destroy the rogue state of Outer Heaven.",
         isShow: false,
       },
@@ -139,14 +141,51 @@ function App() {
     ]);
   };
 
+  const displayRef = useRef();
+
+  function downloadResume() {
+
+    const HTML_Width = displayRef.current.offsetWidth;
+    const HTML_Height = displayRef.current.offsetHeight;
+    const top_left_margin = 15;
+    const PDF_Width = HTML_Width + top_left_margin * 2;
+    const PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
+    const canvas_image_width = HTML_Width;
+    const canvas_image_height = HTML_Height;
+
+    const totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+    html2canvas(displayRef.current).then(function (canvas) {
+      const imgData = canvas.toDataURL("image/jpeg", 1.0);
+      const pdf = new jsPDF("p", "pt", [PDF_Width, PDF_Height]);
+      pdf.addImage(
+        imgData,
+        "JPG",
+        top_left_margin,
+        top_left_margin,
+        canvas_image_width,
+        canvas_image_height
+      );
+      for (let i = 1; i <= totalPDFPages; i++) {
+        pdf.addPage(PDF_Width, PDF_Height);
+        pdf.addImage(
+          imgData,
+          "JPG",
+          top_left_margin,
+          -(PDF_Height * i) + top_left_margin * 4,
+          canvas_image_width,
+          canvas_image_height
+        );
+      }
+      pdf.save("resume.pdf");
+    });
+  }
+
   return (
     <div className="flex bg-gray-100">
       {/* Input Section*/}
       <div className="flex-grow m-8">
-        <ButtonsTray
-          onClear={clearResume}
-          onLoadExample={loadExample}
-        />
+        <ButtonsTray onClear={clearResume} onLoadExample={loadExample} onDownload={downloadResume} />
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
             personalInfo={personalInfo}
@@ -172,11 +211,13 @@ function App() {
       </div>
       <div className="w-[68%] ml-4">
         {/* Display Section*/}
-        <Display
-          personalInfo={personalInfo}
-          educationInfo={educationInfo}
-          experienceInfo={experienceInfo}
-        />
+        <div ref={displayRef}>
+          <Display
+            personalInfo={personalInfo}
+            educationInfo={educationInfo}
+            experienceInfo={experienceInfo}
+          />
+        </div>
       </div>
     </div>
   );
