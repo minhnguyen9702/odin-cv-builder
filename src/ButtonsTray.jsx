@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
 
-function ButtonsTray({ onClear, onLoadExample, onDownload }) {
+function ButtonsTray({ onClear, onLoadExample }) {
   return (
-    <div className="mx-auto p-6 bg-white rounded-lg shadow-md mb-6 flex justify-between">
-      <button onClick={onClear}>Clear Resume</button>
-      <button onClick={onLoadExample}>Load Example</button>
-      <button onClick={onDownload}>Download Resume</button>
+    <div className="mx-auto p-3 bg-white rounded-lg shadow-md mb-6 flex justify-around">
+      <button
+        onClick={onClear}
+        className="px-6 py-3 text-sm bg-red-500 text-white rounded hover:bg-red-600"
+      >
+        Clear Resume
+      </button>
+      <button
+        onClick={onLoadExample}
+        className="px-6 py-3 text-sm bg-gray-100 text-black rounded hover:bg-gray-200"
+      >
+        Load Example
+      </button>
     </div>
   );
 }
@@ -13,7 +22,6 @@ function ButtonsTray({ onClear, onLoadExample, onDownload }) {
 ButtonsTray.propTypes = {
   onClear: PropTypes.func,
   onLoadExample: PropTypes.func,
-  onDownload: PropTypes.func,
 };
 
 export default ButtonsTray;

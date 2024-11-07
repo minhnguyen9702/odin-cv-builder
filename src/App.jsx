@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
@@ -144,7 +143,10 @@ function App() {
     <div className="flex bg-gray-100">
       {/* Input Section*/}
       <div className="flex-grow m-8">
-        <ButtonsTray onClear={clearResume} onLoadExample={loadExample}/>
+        <ButtonsTray
+          onClear={clearResume}
+          onLoadExample={loadExample}
+        />
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
             personalInfo={personalInfo}
