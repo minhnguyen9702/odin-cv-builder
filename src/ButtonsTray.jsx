@@ -31,10 +31,4 @@ ButtonsTray.propTypes = {
   onDownload: PropTypes.func,
 };
 
-ButtonsTray.defaultProps = {
-  onClear: () => {}, // No-op function if not passed
-  onLoadExample: () => {}, // No-op function if not passed
-  onDownload: () => {}, // No-op function if not passed
-};
-
 export default ButtonsTray;

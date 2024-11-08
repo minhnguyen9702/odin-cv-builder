@@ -3,7 +3,7 @@ import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/16/solid";
 
 function Display({ personalInfo, educationInfo, experienceInfo }) {
   return (
-    <div className="bg-white aspect-[10/14.14] w-full max-w-2xl mx-auto p-8 mt-4 mb-4 shadow-md">
+    <div className="p-8">
       {/* Personal Info */}
       <div className="mb-4 text-center">
         <h1 className="text-3xl font-bold">{personalInfo.fullname}</h1>

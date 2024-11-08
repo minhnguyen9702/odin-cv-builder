@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { useReactToPrint } from "react-to-print";
 import { v4 as uuidv4 } from "uuid";
 import DetailsWrapper from "./components/DetailsWrapper";
 import PersonalDetails from "./PersonalDetails";
@@ -8,6 +9,7 @@ import EducationDetails from "./EducationDetails";
 import ExperienceDetails from "./ExperienceDetails";
 import Display from "./Display";
 import ButtonsTray from "./ButtonsTray";
+import DisplayWrapper from "./components/DisplayWrappper";
 
 function App() {
   // This section handles personalInfo
@@ -141,51 +143,18 @@ function App() {
     ]);
   };
 
-  const displayRef = useRef();
-
-  function downloadResume() {
-
-    const HTML_Width = displayRef.current.offsetWidth;
-    const HTML_Height = displayRef.current.offsetHeight;
-    const top_left_margin = 15;
-    const PDF_Width = HTML_Width + top_left_margin * 2;
-    const PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
-    const canvas_image_width = HTML_Width;
-    const canvas_image_height = HTML_Height;
-
-    const totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-    html2canvas(displayRef.current).then(function (canvas) {
-      const imgData = canvas.toDataURL("image/jpeg", 1.0);
-      const pdf = new jsPDF("p", "pt", [PDF_Width, PDF_Height]);
-      pdf.addImage(
-        imgData,
-        "JPG",
-        top_left_margin,
-        top_left_margin,
-        canvas_image_width,
-        canvas_image_height
-      );
-      for (let i = 1; i <= totalPDFPages; i++) {
-        pdf.addPage(PDF_Width, PDF_Height);
-        pdf.addImage(
-          imgData,
-          "JPG",
-          top_left_margin,
-          -(PDF_Height * i) + top_left_margin * 4,
-          canvas_image_width,
-          canvas_image_height
-        );
-      }
-      pdf.save("resume.pdf");
-    });
-  }
+  const contentRef = useRef(null);
+  const handlePrint = useReactToPrint({ contentRef });
 
   return (
     <div className="flex bg-gray-100">
       {/* Input Section*/}
       <div className="flex-grow m-8">
-        <ButtonsTray onClear={clearResume} onLoadExample={loadExample} onDownload={downloadResume} />
+        <ButtonsTray
+          onClear={clearResume}
+          onLoadExample={loadExample}
+          onDownload={handlePrint}
+        />
         <DetailsWrapper header="Personal Details">
           <PersonalDetails
             personalInfo={personalInfo}
@@ -211,13 +180,15 @@ function App() {
       </div>
       <div className="w-[68%] ml-4">
         {/* Display Section*/}
-        <div ref={displayRef}>
-          <Display
-            personalInfo={personalInfo}
-            educationInfo={educationInfo}
-            experienceInfo={experienceInfo}
-          />
-        </div>
+          <DisplayWrapper>
+            <div ref={contentRef}>
+            <Display
+              personalInfo={personalInfo}
+              educationInfo={educationInfo}
+              experienceInfo={experienceInfo}
+            />
+            </div>
+          </DisplayWrapper>
       </div>
     </div>
   );
