@@ -1,6 +1,4 @@
 import { useRef, useState } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import { useReactToPrint } from "react-to-print";
 import { v4 as uuidv4 } from "uuid";
 import DetailsWrapper from "./components/DetailsWrapper";
