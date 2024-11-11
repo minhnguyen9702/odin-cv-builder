@@ -147,9 +147,9 @@ function App() {
   const handlePrint = useReactToPrint({ contentRef });
 
   return (
-    <div className="flex bg-gray-100">
+    <div className="m-4 md:m-8 lg:m-0 lg:flex">
       {/* Input Section*/}
-      <div className="flex-grow m-8">
+      <div className="flex-grow lg:m-8">
         <ButtonsTray
           onClear={clearResume}
           onLoadExample={loadExample}
@@ -178,7 +178,7 @@ function App() {
           />
         </DetailsWrapper>
       </div>
-      <div className="w-[68%] ml-4">
+      <div className="lg:w-[68%]">
         {/* Display Section*/}
           <DisplayWrapper>
             <div ref={contentRef}>

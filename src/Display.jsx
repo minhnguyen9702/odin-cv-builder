@@ -7,7 +7,7 @@ function Display({ personalInfo, educationInfo, experienceInfo }) {
       {/* Personal Info */}
       <div className="mb-4 text-center">
         <h1 className="text-3xl font-bold">{personalInfo.fullname}</h1>
-        <div className="inline-flex items-center justify-center space-x-4">
+        <div className="inline-flex flex-wrap items-center justify-center space-x-4">
           {personalInfo.email ? (
             <div className="inline-flex items-center justify-center">
               <EnvelopeIcon className="h-5 w-5 text-black" />
