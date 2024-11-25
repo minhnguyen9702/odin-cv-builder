@@ -8,6 +8,7 @@ import ExperienceDetails from "./ExperienceDetails";
 import Display from "./Display";
 import ButtonsTray from "./ButtonsTray";
 import DisplayWrapper from "./components/DisplayWrappper";
+import Footer from "./components/Footer";
 
 function App() {
   // This section handles personalInfo
@@ -145,49 +146,52 @@ function App() {
   const handlePrint = useReactToPrint({ contentRef });
 
   return (
-    <div className="m-4 md:m-8 lg:m-0 lg:flex">
-      {/* Input Section*/}
-      <div className="flex-grow lg:m-8">
-        <ButtonsTray
-          onClear={clearResume}
-          onLoadExample={loadExample}
-          onDownload={handlePrint}
-        />
-        <DetailsWrapper header="Personal Details">
-          <PersonalDetails
-            personalInfo={personalInfo}
-            onChange={personalInfoChange}
+    <div>
+      <div className="m-4 md:m-8 lg:m-0 lg:flex">
+        {/* Input Section*/}
+        <div className="flex-grow lg:m-8">
+          <ButtonsTray
+            onClear={clearResume}
+            onLoadExample={loadExample}
+            onDownload={handlePrint}
           />
-        </DetailsWrapper>
-        <DetailsWrapper header="Education">
-          <EducationDetails
-            educationInfo={educationInfo}
-            onAdd={addEducationInfo}
-            onChange={educationInfoChange}
-            onRemove={removeEducation}
-          />
-        </DetailsWrapper>
-        <DetailsWrapper header="Experience">
-          <ExperienceDetails
-            experienceInfo={experienceInfo}
-            onAdd={addExperienceInfo}
-            onChange={experienceInfoChange}
-            onRemove={removeExperience}
-          />
-        </DetailsWrapper>
-      </div>
-      <div className="lg:w-[68%]">
-        {/* Display Section*/}
+          <DetailsWrapper header="Personal Details">
+            <PersonalDetails
+              personalInfo={personalInfo}
+              onChange={personalInfoChange}
+            />
+          </DetailsWrapper>
+          <DetailsWrapper header="Education">
+            <EducationDetails
+              educationInfo={educationInfo}
+              onAdd={addEducationInfo}
+              onChange={educationInfoChange}
+              onRemove={removeEducation}
+            />
+          </DetailsWrapper>
+          <DetailsWrapper header="Experience">
+            <ExperienceDetails
+              experienceInfo={experienceInfo}
+              onAdd={addExperienceInfo}
+              onChange={experienceInfoChange}
+              onRemove={removeExperience}
+            />
+          </DetailsWrapper>
+        </div>
+        <div className="lg:w-[68%]">
+          {/* Display Section*/}
           <DisplayWrapper>
             <div ref={contentRef}>
-            <Display
-              personalInfo={personalInfo}
-              educationInfo={educationInfo}
-              experienceInfo={experienceInfo}
-            />
+              <Display
+                personalInfo={personalInfo}
+                educationInfo={educationInfo}
+                experienceInfo={experienceInfo}
+              />
             </div>
           </DisplayWrapper>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }
